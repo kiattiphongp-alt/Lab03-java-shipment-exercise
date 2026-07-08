@@ -1,11 +1,11 @@
-#  java-shipment-exercise
+# java-shipment-exercise
 
 แบบฝึกหัด Java OOP — ระบบคำนวณค่าขนส่ง Shipment  
 วิชา Object-Oriented Programming | ปีการศึกษา 2569
 
 ---
 
-## คำอธิบายโจทย์
+##  คำอธิบายโจทย์
 
 บริษัทขนส่งแห่งหนึ่งมีรายการ **Shipment** หลายรายการ  
 ให้เขียนโปรแกรม Java คำนวณค่าขนส่งตามน้ำหนักและประเภท แล้วแสดงยอดรวม
@@ -56,8 +56,16 @@ java-shipment-exercise/
 
 กดปุ่ม **Fork** มุมบนขวาของหน้านี้
 
-> Fork แล้ว repo จะไปอยู่ใน GitHub ของตัวเอง เช่น  
-> `https://github.com/your-username/java-shipment-exercise`
+> Fork แล้ว repo จะไปอยู่ใน GitHub ของตัวเอง
+
+**ตั้งชื่อ repo ให้ถูกต้อง:**
+- รูปแบบ: `lab03_67XXXXX` (แทน XXXXX ด้วยรหัสนักศึกษา 5 หลักสุดท้าย)
+- ตัวอย่าง: `lab03_6712345`
+
+> ถ้าลืมตั้งชื่อตอน Fork → ไปแก้ที่ **Settings → Repository name → Rename**
+
+link repo ที่ส่งให้อาจารย์จะเป็น:
+`https://github.com/your-username/lab03_67XXXXX`
 
 ---
 
@@ -71,36 +79,71 @@ git clone https://github.com/your-username/java-shipment-exercise.git
 
 ### Step 3 — เปิดโปรเจกต์ใน Eclipse หรือ VS Code
 
-**ใช้ Eclipse:**
-1. เปิด Eclipse → **File → Import**
-2. เลือก **Maven → Existing Maven Projects**
-3. กด **Browse** เลือกโฟลเดอร์ที่ Clone มา
-4. กด **Finish**
+---
 
-> Eclipse จะโหลด `pom.xml` และดาวน์โหลด JUnit 5 ให้อัตโนมัติ
+#### 🟦 ใช้ VS Code
 
-**ใช้ VS Code:**
-1. ติดตั้ง Extension: **Extension Pack for Java** (Microsoft)
-2. เปิด VS Code → **File → Open Folder** เลือกโฟลเดอร์ที่ Clone มา
-3. VS Code จะโหลด `pom.xml` และดาวน์โหลด JUnit 5 ให้อัตโนมัติ
+1. ติดตั้ง Extension: **Extension Pack for Java** (Microsoft) — ถ้ายังไม่มี
+2. **File → Open Folder** → เลือกโฟลเดอร์ที่ Clone มา
+3. VS Code อ่าน `pom.xml` แล้วโหลด JUnit 5 ให้อัตโนมัติ
+4. เปิด Terminal ใน VS Code (**Terminal → New Terminal**)
+5. รัน test ได้เลย:
 
-> ต้องมี Java 17+ ติดตั้งในเครื่องก่อน ดาวน์โหลดได้ที่ https://adoptium.net
+```bash
+mvn -Dtest=ShipmentTest_SectionX test
+```
 
 ---
 
-### Step 3.5 — ⚠️ ลบไฟล์ Section อื่นออก
+#### 🟧 ใช้ Eclipse
 
-**สำคัญมาก** — เก็บเฉพาะ Section ที่ได้รับมอบหมาย ลบ Section อื่นออกด้วยคำสั่งนี้ใน CMD:
+> ⚠️ ห้าม **File → New → Java Project** — ต้อง **Import** เท่านั้น
+
+1. เปิด Eclipse → **File → Import**
+2. เลือก **Maven → Existing Maven Projects** → กด **Next**
+3. กด **Browse** → เลือกโฟลเดอร์ที่ Clone มา
+4. กด **Finish**
+5. Eclipse อ่าน `pom.xml` แล้วโหลด JUnit 5 ให้อัตโนมัติ
+6. เปิด CMD แล้วรัน test:
 
 ```bash
-# ตัวอย่าง: ถ้าได้ Section 2 ให้ลบ 1, 3, 4 ออก
+cd path/ที่เก็บโปรเจกต์
+mvn -Dtest=ShipmentTest_SectionX test
+```
+
+> ต้องมี Java 17+ ในเครื่องก่อน ดาวน์โหลดได้ที่ https://adoptium.net
+
+---
+
+
+### Step 3.5 — ⚠️ ลบไฟล์ Section อื่นออก
+
+หลัง Fork แล้วให้ลบไฟล์ของ Section อื่นออกทั้งหมด ทั้ง Exercise และ Test file
+
+**ตัวอย่าง: ถ้าได้รับมอบหมาย Section 2**
+
+```bash
+# ลบ Exercise file
 git rm src/main/java/com/example/ShipmentSection1_Exercise.java
 git rm src/main/java/com/example/ShipmentSection3_Exercise.java
 git rm src/main/java/com/example/ShipmentSection4_Exercise.java
-git rm ExpectedOutput_Section1.md ExpectedOutput_Section3.md ExpectedOutput_Section4.md
 
-git commit -m "remove: ลบ Section ที่ไม่ใช่ของตัวเองออก"
+# ลบ Test file
+git rm src/test/java/com/example/ShipmentTest_Section1.java
+git rm src/test/java/com/example/ShipmentTest_Section3.java
+git rm src/test/java/com/example/ShipmentTest_Section4.java
+
+git commit -m "remove: ลบไฟล์ Section อื่นออก เหลือแค่ Section ของตัวเอง"
 git push origin main
+```
+
+**โครงสร้างที่ถูกต้องหลังลบ (ตัวอย่าง Section 2):**
+```
+src/
+├── main/java/com/example/
+│   └── ShipmentSection2_Exercise.java   ← เหลือแค่ของตัวเอง
+└── test/java/com/example/
+    └── ShipmentTest_Section2.java        ← เหลือแค่ของตัวเอง
 ```
 
 ---
@@ -222,7 +265,6 @@ git push origin main
 
 - [ ] Fork และ Clone repo แล้ว
 - [ ] Import โปรเจกต์ใน Eclipse หรือ VS Code แล้ว
-- [ ] ลบไฟล์ Section อื่นออกแล้ว
 - [ ] แก้ TODO ครบทุกจุดใน Eclipse
 - [ ] รันใน Eclipse หรือ VS Code — ผลลัพธ์ตรงกับ ExpectedOutput
 - [ ] รัน `mvn test` ใน CMD — ขึ้น `BUILD SUCCESS`
